@@ -10,9 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-ql$!*8icncxoj^a@hf()(5=xb=6h$iwt+mkx1c0par(%_r*lr)'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # ---
 # Application definition
