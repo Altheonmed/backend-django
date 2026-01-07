@@ -1,19 +1,22 @@
 """
 Django settings for telemedicine_project project.
+Optimized for Production on Render.com
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
-import os
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-ql$!*8icncxoj^a@hf()(5=xb=6h$iwt+mkx1c0par(%_r*lr)'
+# Sécurité : On utilise une variable d'environnement sur Render, sinon la clé par défaut
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-ql$!*8icncxoj^a@hf()(5=xb=6h$iwt+mkx1c0par(%_r*lr)')
 
-DEBUG = False
+# DEBUG est False en production pour la sécurité
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ["*"]
-
 
 # ---
 # Application definition
@@ -35,9 +38,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # Doit être en premier
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # INDISPENSABLE pour les fichiers statiques sur Render
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -66,6 +69,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'telemedicine_project.wsgi.application'
 
 # Database
+# Note: SQLite3 fonctionne sur Render mais les données s'effacent à chaque redémarrage (disque éphémère).
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -83,19 +87,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
+# ---
+# Configuration des fichiers statiques (CSS, JavaScript, Images)
+# ---
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Cette ligne permet à WhiteNoise de compresser les fichiers pour qu'ils chargent plus vite
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ---
 # Configuration pour les fichiers médias (uploads)
-# Ceci est la configuration la plus importante pour les téléchargements.
 # ---
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -117,7 +122,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), # Augmenté à 60min pour plus de confort
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
