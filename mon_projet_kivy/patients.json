@@ -1,0 +1,44 @@
+{
+    "001": {
+        "id": "001",
+        "nom_complet": "Omar NDIOUM",
+        "age": "29",
+        "date_de_naissance": "28/01/1996",
+        "sexe": "Homme",
+        "adresse": "Ngor",
+        "numero_telephone": "123456789",
+        "email": "ndioumo@gmail.com",
+        "personne_a_contacter": "Foula NDIOUM",
+        "numero_personne_a_contacter": "987456321",
+        "antecedants_medicaux": "ok le bon prix",
+        "consultations": [
+            {
+                "id": "20250811214611",
+                "date_et_heure": "11/08/2025 \u00e0 21:53",
+                "poids": "67",
+                "taille": "175",
+                "spo2": "98",
+                "tension": "8/12",
+                "temperature": "36.9",
+                "motif_de_consultation": "les donn\u00e9es de Motif de consultation, Antecedants medicaux, Symptomes actuels, Resultats d 'examens, Diagnostic, Traitement prescrit, Recommandations et Prochain rendez vous son superpos\u00e9es dans l'ecran de patient_detail. il ne reviennent pas \u00e0 la ligne dans le fichier pdf.",
+                "antecedants_medicaux": "okldoi\nkogld\nlbkcoy\nkoghlj",
+                "symptomes_actuels": "okldoi\nkogld\nlbkc\nkoghlj",
+                "resultats_d_examens": "okldoi\nkogld\nlbkcoy\nkoghlj",
+                "diagnostic": "okldoi\nkogld\nlbkcoy\nkoghlj",
+                "traitement_prescrit": "okldoi\nkogld\nlbkcoy\nkoghlj",
+                "recommandations": "okldoi\nkogld\nlbkcoy\nkoghlj",
+                "prochain_rendez_vous": "Dans 15 jours"
+            }
+        ],
+        "actes_medicaux": [
+            {
+                "id": "0b8903b3-cd33-49dd-8fad-0f409cdd5b27",
+                "date_et_heure": "12/08/2025 08:50",
+                "nom_de_l_acte": "Radiographie des poumons",
+                "description": "En attente",
+                "resultats_observations": "En attente :"
+            }
+        ],
+        "groupe_sanguin": "A+"
+    }
+}

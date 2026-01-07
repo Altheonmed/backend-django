@@ -1,0 +1,20 @@
+{
+    "1": {
+        "password": "1",
+        "specialty": "Radiologie"
+    },
+    "2": {
+        "password": "1",
+        "specialty": "Gyn\u00e9cologue"
+    },
+    "Dr Amadou SOW": {
+        "username": "Dr Amadou SOW",
+        "password": "1",
+        "specialty": "Urgentiste"
+    },
+    "Dr Mariama DIOUM": {
+        "username": "Dr Mariama DIOUM",
+        "password": "1",
+        "specialty": "Niaamologue"
+    }
+}
